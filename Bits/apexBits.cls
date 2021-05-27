@@ -4,6 +4,7 @@ public class apexBits {
     /*
     @Description: Creats a random string using 0-9 numbers and A-d letters. Limited letter use it to avoid unwanted profanity in the string.
     @SOQL Queries: 0
+    @Credit: greenstork via salesforce stack exchange (https://salesforce.stackexchange.com/questions/43823/how-do-i-generate-a-random-string)
     @Possible Modifications: Modify the "chars" string to expand the range of possible strings
     */
     public static String generateRandomString(Integer len) {

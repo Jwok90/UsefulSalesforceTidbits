@@ -1,0 +1,147 @@
+<template>
+  <template if:true={showModal}>
+    <div>
+      <section
+        role="dialog"
+        tabindex="-1"
+        aria-labelledby="modal-heading-01"
+        aria-modal="true"
+        aria-describedby="modal-content-id-1"
+        class="slds-modal slds-fade-in-open"
+      >
+        <div class="slds-modal__container" data-id="modalContainer">
+          <header class="slds-modal__header" style="width: 100%;">
+            <button
+              class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+              title="Close"
+              onclick={handleClose}
+            >
+              <lightning-icon
+                icon-name="utility:close"
+                alternative-text="close"
+              ></lightning-icon>
+              <span class="slds-assistive-text">Close</span>
+            </button>
+            <slot name="header">
+              <h2
+                id="modal-heading-01"
+                class="slds-text-heading_medium slds-hyphenate"
+              >
+                {modalHeader}
+              </h2>
+            </slot>
+          </header>
+          <div
+            class="slds-modal__content"
+            id="modal-content-id-1"
+            style="width: 100%; overflow-y: auto;"
+          >
+            <template if:true={isLoading}>
+              <div>
+                <lightning-spinner alternative-text="Loading...">
+                </lightning-spinner>
+              </div>
+            </template>
+            <slot name="body">
+              <lightning-record-edit-form
+                object-api-name={objectName}
+                record-type-id={recordTypeId}
+                onsuccess={handleCreateRecordSuccess}
+                onerror={showError}
+              >
+                <template for:each={pageLayout} for:item="section">
+                  <div key={section}>
+                    <template if:false={section.hidden}>
+                      <div class="slds-var-p-horizontal_x-small">
+                        <div class="sectionHeader slds-text-heading_small">
+                          {section.name}
+                        </div>
+                      </div>
+                    </template>
+                    <div
+                      class="slds-grid slds-clearfix slds-p-horizontal_x-large slds-p-top_x-small slds-p-bottom_medium"
+                    >
+                      <template for:each={section.columns} for:item="column">
+                        <div key={column} class={column.columnsClass}>
+                          <template for:each={column.fields} for:item="field">
+                            <template if:false={field.hidden}>
+                              <lightning-input-field
+                                key={field.name}
+                                field-name={field.name}
+                                variant={section.fieldVariant}
+                                value={field.value}
+                                required={field.required}
+                                onchange={handleNewInput}
+                              ></lightning-input-field>
+                            </template>
+                            <template if:true={field.hidden}>
+                              <div key={field} hidden>
+                                <lightning-input-field
+                                  field-name={field.name}
+                                  variant={section.fieldVariant}
+                                  value={field.value}
+                                  required={field.required}
+                                  onchange={handleNewInput}
+                                ></lightning-input-field>
+                              </div>
+                            </template>
+                          </template>
+                        </div>
+                      </template>
+                    </div>
+                    <div hidden>
+                      <template if:true={isHiddenRelatedToField}>
+                        <lightning-input-field
+                          field-name={relatedToField}
+                          value={firstRelatedToRecord}
+                        ></lightning-input-field>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+              </lightning-record-edit-form>
+            </slot>
+          </div>
+          <footer class="slds-modal__footer" style="width: 100%;">
+            <template if:true={showSubmissionErrorsOnFooter}>
+              <template if:true={submissionError}>
+                <div
+                  class="slds-p-horizontal_x-large slds-text-color_error slds-var-p-bottom_x-small"
+                >
+                  {submissionError}
+                </div>
+              </template>
+            </template>
+            <div class="slds-align_absolute-center">
+              <template if:true={showCancelButton}>
+                <button
+                  class="slds-button slds-button_neutral"
+                  onclick={handleNegative}
+                >
+                  {cancelButtonLabel}
+                </button>
+              </template>
+              <template if:true={showSubmitButton}>
+                <button
+                  class="slds-button slds-button_brand"
+                  onclick={handleSaveAndExit}
+                >
+                  {submitButtonLabel}
+                </button>
+              </template>
+              <template if:true={showSubmitAndNewButton}>
+                <button
+                  class="slds-button slds-button_brand"
+                  onclick={handleSaveAndNew}
+                >
+                  {submitAndNewButtonLabel}
+                </button>
+              </template>
+            </div>
+          </footer>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+  </template>
+</template>

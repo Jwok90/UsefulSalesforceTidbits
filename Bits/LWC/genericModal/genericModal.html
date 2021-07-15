@@ -1,0 +1,71 @@
+<template>
+  <template if:true={showModal}>
+    <div>
+      <section
+        role="dialog"
+        tabindex="-1"
+        aria-labelledby="modal-heading-01"
+        aria-modal="true"
+        aria-describedby="modal-content-id-1"
+        class="slds-modal slds-fade-in-open"
+      >
+        <div
+          class="slds-modal__container"
+          data-id="modalContainer"
+        >
+          <header class="slds-modal__header" style="width: 100%;">
+            <template if:true={closeButtonVisible}>
+              <button
+                class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                title="Close"
+                onclick={handleClose}
+              >
+                <lightning-icon
+                  icon-name="utility:close"
+                  alternative-text="close"
+                ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+              </button>
+            </template>
+            <slot name="header">
+              <h2
+                id="modal-heading-01"
+                class="slds-text-heading_medium slds-hyphenate"
+              >
+                {modalHeader}
+              </h2>
+            </slot>
+          </header>
+          <div
+            class="slds-modal__content"
+            id="modal-content-id-1"
+            style="width: 100%; overflow-y: auto;"
+          >
+            <slot name="body"></slot>
+          </div>
+          <footer class="slds-modal__footer" style="width: 100%;">
+            <div class="slds-align_absolute-center">
+              <template if:true={negativeButtonVisible}>
+                <button
+                  class="slds-button slds-button_neutral"
+                  onclick={handleNegative}
+                >
+                  {negativeButtonLabel}
+                </button>
+              </template>
+              <template if:true={positiveButtonVisible}>
+                <button
+                  class="slds-button slds-button_brand"
+                  onclick={handlePositive}
+                >
+                  {positiveButtonLabel}
+                </button>
+              </template>
+            </div>
+          </footer>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+  </template>
+</template>

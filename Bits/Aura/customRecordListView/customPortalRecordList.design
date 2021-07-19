@@ -1,0 +1,47 @@
+<design:component>
+  <design:attribute
+    name="objectName"
+    label="Object API Name"
+    description="The API name of the Object. For custom objects make sure to include the '__c' suffix"
+  />
+  <design:attribute
+    name="showSearch"
+    label="Show Search Box"
+    description="Display the search box to the user"
+  />
+  <design:attribute
+    name="showActions"
+    label="Show List Actions"
+    description="Display the List Actions to the user"
+  />
+  <design:attribute name="enableInlineEditing" label="Enable Inline Editing" />
+  <design:attribute name="showRowLevelActions" label="Show Row Level Actions" />
+  <design:attribute
+    name="numberOfRows"
+    label="Number of Rows"
+    description="The number of rows to display in the list view"
+  />
+  <design:attribute
+    name="availableListviews"
+    label="Available List Views"
+    description="The API name of the list views to display to the user. Separate multiple values with a comma (e.g. List_Name_1, List_Name_2)"
+  />
+  <design:attribute
+    name="includeViewAll"
+    label="Include 'View All' Listview"
+    description="Include the 'View All' list view in the available list views"
+  />
+  <design:attribute
+    name="includeViewRecent"
+    label="Include 'Recently Viewed' Listview"
+    description="Include the 'Recently Viewed' list view in the available list views (not available for mobile devices)"
+  />
+  <design:attribute
+    name="defaultListView"
+    label="Default List View"
+    datasource="First Available List View,View All,View Recent"
+    description="The default list view is the list view that will display when the user first loads the page. The default is to select the first list view in the 'Available List Views' field. You can also set the 'View All' or 'Recently Viewed' list views as the default, if they are included"
+  />
+  <!-- <design:attribute name="viewAllIsDefault" label="viewAllIsDefault" />
+  <design:attribute name="viewRecentIsDefault" label="viewRecentIsDefault" /> -->
+</design:component>

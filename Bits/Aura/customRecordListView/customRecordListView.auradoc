@@ -1,0 +1,9 @@
+<aura:documentation>
+  <aura:description>Documentation</aura:description>
+  <aura:example
+    name="customRecordListView"
+    ref="c:customRecordListView"
+    label="Custom Record List View"
+  >
+  </aura:example>
+</aura:documentation>

@@ -1,8 +1,10 @@
 ## Custom Record List View
 
-The Custom Record List View component is a flexible alternative to the standard [Record List](https://help.salesforce.com/articleView?id=sf.rss_record_list_view.htm&type=5) component for Salesforce Experience Sites (formerly Salesforce Communities). It's purpose is to address certain limitations of the standard Record List component, namely the limitations of customization of the component when it is viewed from a mobile application. 
+The Custom Record List View component is a flexible alternative to the standard 
+<a href="https://help.salesforce.com/articleView?id=sf.rss_record_list_view.htm&type=5" target="_blank">Record List</a> component for Salesforce Experience Sites (formerly Salesforce Communities). It's purpose is to address certain limitations of the standard Record List component, namely the limitations of customization of the component when it is viewed from a mobile application. 
 
-This component is a modified version of the code provided by [Piyush Soni at SfdcMonkey.com](https://sfdcmonkey.com/2019/02/03/dynamic-list-view-salesforce-lightning/), building off their original model to increase configurability of the component and modifying some visual design.
+
+This component is a modified version of the code provided by <a href="https://sfdcmonkey.com/2019/02/03/dynamic-list-view-salesforce-lightning/" target="_blank">Piyush Soni at SfdcMonkey.com</a>, building off their original model to increase configurability of the component and modifying some visual design.
 
 ### Configurable Properties
 
